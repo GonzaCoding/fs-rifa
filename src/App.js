@@ -11,8 +11,6 @@ import Login from './Pages/Login';
 import Logout from './Pages/Logout';
 import MiPerfil from './Pages/MiPerfil';
 
-
-<<<<<<< HEAD
 const App = () =>(
   <div className="App">
     <BrowserRouter>
@@ -31,27 +29,5 @@ const App = () =>(
     </BrowserRouter>
   </div>
 );
-=======
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Header />
-        <section className="principal">
-          <Redirect from="/" to="/home" />
-          <Switch>
-            <Route path="/home" exact component={Home} />
-            <Route path="/registro" exact component={Registro} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/miperfil" exact component={MiPerfil} />
-            <Route path="/logout" exact component={Logout} />
-          </Switch>
-        </section>
-        <Footer />
-      </BrowserRouter>
-    </div>
-  );
-}
 
->>>>>>> b04321b660f8b1d0cf559058916f3be9940d3505
 export default App;
