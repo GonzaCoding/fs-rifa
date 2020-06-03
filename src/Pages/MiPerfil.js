@@ -4,74 +4,86 @@ import firebase from '../Config/firebase';
 import { Link } from 'react-router-dom';
 import Loading from '../Components/Loading';
 
-class Registro extends Component {
-    constructor() {
-        super();
-
+class MiPerfil extends Component {
+    constructor(props) {
+        super(props);
+        
+        var user = firebase.auth.currentUser;
         this.state = {
+            uid: user.uid,
             nombre: '',
             apellido: '',
-            email: '',
+            email: user.email,
             username: '',
             pass: '',
             pass2: '',
-            created: false,
-            errorCreated: '',
-            validated: false
+            updated: false,
+            errorUpdated: '',
+            validated: false,
+            login: false
         }
+        
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
-    crearUsuario() {
-        let email = this.state.email;
-        let password = this.state.pass;
+    componentDidMount(){
+        this.traerUsuario();
+    }
 
-        firebase.auth.createUserWithEmailAndPassword(email, password)
-            .then((arg) => {
-                firebase.db.collection("usuarios").add({
-                    uid: arg.user.uid,
-                    nombre: this.state.nombre,
-                    apellido: this.state.apellido,
-                    username: this.state.username
-                });
-                this.setState({
-                    created: true,
-                    errorCreated: ''
-                })
-                return true;
+    componentDidUpdate(){
+        if(this.state.updated){
+            const history = this.props.history;
+            setTimeout(()=>{
+                history.push('/home');
+            }, 4000)
+        }
+    }
+    
+    traerUsuario = async () => {
+        const usr = await firebase.db.collection("usuarios").where("uid", "==",this.state.uid).get();           
+        await usr.forEach(async function(usrData) {            
+            this.setState({
+                ...usrData.data(),
+                id: usrData.id
+            });
+        }, this);
+    } 
+
+    actualizarUsuario() {
+        firebase.db.collection("usuarios").doc(this.state.id).update({
+            nombre: this.state.nombre,
+            apellido: this.state.apellido,
+            username: this.state.username
+        })
+        .then(()=>{
+            this.setState({
+                updated: true,
+                errorUpdated: ''
             })
-            .catch((error) => {
-                console.log("Error GI: ");
-                console.log(error.code);
-                this.setState({
-                    errorCreated: error.message,
-                })
-                return false;
-            });    
+        })
+        .catch((error) => {
+            console.log("Error GI: ");
+            console.log(error.code);
+            this.setState({
+                errorUpdated: error.message,
+            })
+            return false;
+        })        
     }
 
     handleSubmit(event) {
+        event.preventDefault();
+        event.stopPropagation();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            console.log(this.state);
+            //console.log(this.state);
             this.setState({
                 validated: true
             });
         } else {
-            if(form.pass.value === form.pass2.value){
-                this.crearUsuario();
-            } else {
-                this.setState({
-                    created: false,
-                    errorCreated: 'Las contraseñas no coinciden'
-                });
-            }
-            
+            this.actualizarUsuario();            
         }
-        event.preventDefault();
-        event.stopPropagation();
-
     }
 
     handleChange(event) {
@@ -81,23 +93,21 @@ class Registro extends Component {
 
         this.setState({
             [name]: value,
-            errorCreated: ''
+            errorUpdated: ''
         })
     }
 
-    componentDidUpdate(){
-        if(this.state.created){
-            const history = this.props.history;
-            setTimeout(()=>{
-                history.push('/home');
-            }, 4000)
-        }
+    irPerfil = () => {
+        this.setState({
+            updated: false,
+            validated: false
+        })
     }
 
     render() {
         const estado = this.state;
 
-        if(estado.created === false)
+        if(estado.updated === false)
             return (
                 <Form noValidate validated={estado.validated} onSubmit={this.handleSubmit}>
                     <Form.Row>
@@ -117,7 +127,7 @@ class Registro extends Component {
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Email:</Form.Label>
-                            <Form.Control required type="email" name="email" value={estado.email} placeholder="Ingrese email..." onChange={this.handleChange} />
+                            <Form.Control disabled type="email" name="email" value={estado.email} placeholder="Ingrese email..." onChange={this.handleChange} />
                             <Form.Control.Feedback type="invalid">
                                     Ingrese un email válido.
                                 </Form.Control.Feedback>
@@ -145,23 +155,23 @@ class Registro extends Component {
                         </Form.Group>
                     </Form.Row>
 
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridPassword">
-                            <Form.Label>Contraseña:</Form.Label>
-                            <Form.Control required type="password" name="pass" value={estado.pass} placeholder="Contraseña..." onChange={this.handleChange} />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridPassword2">
-                            <Form.Label>Repetir contraseña:</Form.Label>
-                            <Form.Control required type="password" name="pass2" value={estado.pass2} placeholder="Repetir contraseña..." onChange={this.handleChange} />
-                        </Form.Group>
-                    </Form.Row>
-                    <Alert variant='danger' style={{display: (this.state.errorCreated ==='' ? "none" : "block") }}>
-                        Error al crear el usuario: {this.state.errorCreated}
+                    
+                    <Alert variant='danger' style={{display: (this.state.errorUpdated ==='' ? "none" : "block") }}>
+                        Error al actualizar el usuario: {this.state.errorUpdated}
                     </Alert>
 
+
                     <Button variant="primary" type="submit">
-                        🎙 Registrarse!
+                        🎙 Actualizar
+                    </Button>
+                    &nbsp;
+                    <Button 
+                        onClick={()=>{
+                            this.props.history.goBack();
+                        }} 
+                        variant="primary"
+                    >
+                        <span role="img" aria-label="Music">🎼</span> Volver
                     </Button>
                 </Form>
             );
@@ -169,14 +179,15 @@ class Registro extends Component {
             return (
                 <div>
                     <Alert variant='success'>
-                        ¡Usuario creado con éxito! Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "<span role="img" aria-label="Music">🎼</span> Ir al inicio"
+                        ¡Información de Usuario actualizada con éxito!  Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "<span role="img" aria-label="Music">🎼</span> Ir al inicio"
                     </Alert>
                     <Loading />
                     <Button style={{
                         marginTop: '20px'
                     }} as={Link} to={"/home"} variant="primary"><span role="img" aria-label="Music">🎼</span> Ir al inicio</Button>
+                    {/*<Button onClick={this.irPerfil} variant="primary">🎸 Mi perfil</Button>&nbsp;*/}
                 </div>
             )
     }
 }
-export default Registro;
+export default MiPerfil;
