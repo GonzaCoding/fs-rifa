@@ -1,0 +1,18 @@
+.grilla {
+    display: flex;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin: 0px auto;
+    padding:15px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center ;
+    box-shadow: 4px 4px 4px gray;
+}
+
+.grilla Button {
+    margin: 5px;
+    flex-basis: 10%;
+}
