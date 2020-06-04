@@ -1,17 +1,17 @@
 import React from 'react';
 import './Numero.css';
 import { Button } from 'react-bootstrap';
-import { GrillaConsumer } from '../Grilla';
+import { RifaConsumer } from '../Rifa';
 
 const Numero = (props) => {
     
 
     return(
-        <GrillaConsumer>
+        <RifaConsumer>
             {({ numeros, setEstado})=>(
                 <Button onClick={()=> {setEstado(props.valor)}} variant={props.tipo}>{props.valor}</Button>
             )}
-        </GrillaConsumer>
+        </RifaConsumer>
         
     ); 
 }

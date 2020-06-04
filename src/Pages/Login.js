@@ -76,8 +76,8 @@ class Login extends Component {
         if (estado.login === false) {
             return (
                 <>
-                    <h1>¡Bienvenid@ a GI Music Shop!</h1>
-                    <h3>La mayor tienda de instrumentos musicales y accesorios de latinoamérica</h3>
+                    <h1>¡Bienvenid@ a FS rifa!</h1>
+                    <h3>La mejor forma de realizar sorteos online</h3>
                     <p>Introduzca sus datos para ingresar en el sistema: </p>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Row>

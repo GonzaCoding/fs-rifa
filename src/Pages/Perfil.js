@@ -4,7 +4,7 @@ import firebase from '../Config/firebase';
 import { Link } from 'react-router-dom';
 import Loading from '../Components/Loading';
 
-class MiPerfil extends Component {
+class Perfil extends Component {
     constructor(props) {
         super(props);
         
@@ -190,4 +190,4 @@ class MiPerfil extends Component {
             )
     }
 }
-export default MiPerfil;
+export default Perfil;

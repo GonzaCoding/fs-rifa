@@ -30,7 +30,7 @@ const Header = () => {
     },[]);
 
     return (
-        <Navbar bg="primary" variant="dark" collapseOnSelect expand="sm" sticky="top"> 
+        <Navbar bg="primary" variant="dark" collapseOnSelect expand="sm" sticky="top" > 
             <Navbar.Brand as={Link} to="/home">
                 <img
                     alt=""
@@ -42,9 +42,12 @@ const Header = () => {
                 FS rifa
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
+            <Navbar.Collapse id="responsive-navbar-nav" >
                 <Nav className="mr-auto">
                     <Nav.Link as={Link} to="/home"><span role="img" aria-label="Music">🎼</span> Inicio</Nav.Link>
+                    { userData &&
+                        <Nav.Link as={Link} to="/crear"><span role="img" aria-label="Music">🎼</span> Crear rifa</Nav.Link>
+                    }
                 </Nav>
                 <Nav className="justify-content-end">
                 {
