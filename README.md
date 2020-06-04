@@ -1,5 +1,6 @@
 ## TO-DO:
 
+Implementar variables de entorno<br />
 Eliminar todos los emojis<br />
 Estandarizar componentes y CSS de todas las páginas<br />
 Integración con Marketplace de Mercadopago<br />
