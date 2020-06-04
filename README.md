@@ -1,11 +1,11 @@
 ## TO-DO:
 
-Eliminar todos los emojis
-Estandarizar componentes y CSS de todas las páginas
-Integración con Marketplace de Mercadopago
-Login con Google
-Login con Twitter
-Página de "Mis Rifas"
+Eliminar todos los emojis<br />
+Estandarizar componentes y CSS de todas las páginas<br />
+Integración con Marketplace de Mercadopago<br />
+Login con Google<br />
+Login con Twitter<br />
+Página de "Mis Rifas"<br />
 
 ## Available Scripts
 
