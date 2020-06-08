@@ -1,13 +1,12 @@
 ## TO-DO:
 
-- Eliminar/Cambiar todos los emojis
-- Agregar ícono de NavBar <br />
-- Agregar favicon <br />
 - Estandarizar componentes y CSS de todas las páginas
 - Integración con Marketplace de Mercadopago
 - Login con Google
 - Login con Twitter
 - Página de "Mis Rifas"
+- Agregar ícono de NavBar <br />
+- Agregar favicon <br />
 
 
 ## Variables de entorno e inicialización

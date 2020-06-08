@@ -104,7 +104,7 @@ class Login extends Component {
                         </Alert>
 
                         <Button variant="primary" type="submit">
-                        🎙 ¡Ingresar!
+                         ¡Ingresar!
                         </Button>
                     </Form>
                 </>
@@ -113,12 +113,12 @@ class Login extends Component {
             return (
                 <>
                     <Alert variant='success'>
-                        ¡Ingreso exitoso! Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "<span role="img" aria-label="Music">🎼</span> Ir al inicio"
+                        ¡Ingreso exitoso! Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "Ir al inicio"
                     </Alert>
                     <Loading />
                     <Button style={{
                         marginTop: '20px'
-                    }} as={Link} to={"/home"} variant="primary"><span role="img" aria-label="Music">🎼</span> Ir al inicio</Button>
+                    }} as={Link} to={"/home"} variant="primary">Ir al inicio</Button>
                 </>
             )
         }

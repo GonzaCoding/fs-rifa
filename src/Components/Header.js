@@ -44,27 +44,27 @@ const Header = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav" >
                 <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/home"><span role="img" aria-label="Music">🎼</span> Inicio</Nav.Link>
+                    <Nav.Link as={Link} to="/home">Inicio</Nav.Link>
                     { userData &&
-                        <Nav.Link as={Link} to="/crear"><span role="img" aria-label="Music">🎼</span> Crear rifa</Nav.Link>
+                        <Nav.Link as={Link} to="/crear">Crear rifa</Nav.Link>
                     }
                 </Nav>
                 <Nav className="justify-content-end">
                 {
                     !userData && 
                         <>
-                                <Nav.Link as={Link} to="/login">🎙 Ingresar</Nav.Link>
-                                <Nav.Link as={Link} to="/registro"><span role="img" aria-label="Figures">🎶</span> Crear cuenta</Nav.Link>
+                                <Nav.Link as={Link} to="/login">Ingresar</Nav.Link>
+                                <Nav.Link as={Link} to="/registro">Crear cuenta</Nav.Link>
                         </>
                 }
                 {
                     userData &&
                         <>
-                            <NavDropdown drop="left" title={"🎵 "+userData.username} id="basic-nav-dropdown">
-                            <NavDropdown.Item as={Link} to="/miperfil"><span role="img" aria-label="Guitarra">🎸</span> Mi perfil</NavDropdown.Item>
-                            <NavDropdown.Item href="#"><span role="img" aria-label="Saxo">🎷</span> Mis rifas</NavDropdown.Item>
+                            <NavDropdown drop="left" title={userData.username} id="basic-nav-dropdown">
+                            <NavDropdown.Item as={Link} to="/miperfil">Mi perfil</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Mis rifas</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item as={Link} to="/logout"><span role="img" aria-label="Audifono">🎧</span> Cerrar sesión</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/logout">Cerrar sesión</NavDropdown.Item>
                             </NavDropdown>
                         </>
                 }

@@ -15,7 +15,7 @@ const ItemRifa = (props) => (
     <div style={ItemRifaStyle}>
         <h2>{props.rifa.nombre}</h2>
         <p>{props.rifa.descripcion}</p>
-        <Button as={Link} to={"/participar/"+props.rifa.id} variant="primary"><span role="img" aria-label="Music">🎼</span> Participar</Button>&nbsp;
+        <Button as={Link} to={"/participar/"+props.rifa.id} variant="primary">Participar</Button>&nbsp;
     </div>
 );
 

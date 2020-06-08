@@ -80,7 +80,7 @@ const Crear = () => {
             </Alert>*/}
 
             <Button variant="primary" type="submit">
-                🎙 Crear rifa!
+                Crear rifa!
             </Button>
         </Form>
     );

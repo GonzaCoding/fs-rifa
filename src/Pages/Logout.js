@@ -14,9 +14,9 @@ const Logout = () => {
             <Alert variant='success'>
                 ¡Gracias por utilizar nuestro sistema!
             </Alert>
-            <Button as={Link} to={"/home"} variant="primary"><span role="img" aria-label="Music">🎼</span> Ir al inicio</Button>&nbsp;
-            <Button as={Link} to={"/login"} variant="primary"><span role="img" aria-label="Mic">🎙</span> Ingresar</Button>&nbsp;
-            <Button as={Link} to={"/registro"} variant="primary"><span role="img" aria-label="Figures">🎶</span> Crear cuenta</Button>
+            <Button as={Link} to={"/home"} variant="primary">Ir al inicio</Button>&nbsp;
+            <Button as={Link} to={"/login"} variant="primary">Ingresar</Button>&nbsp;
+            <Button as={Link} to={"/registro"} variant="primary">Crear cuenta</Button>
         </div>
     )
 }

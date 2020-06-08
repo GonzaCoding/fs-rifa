@@ -162,7 +162,7 @@ class Perfil extends Component {
 
 
                     <Button variant="primary" type="submit">
-                        🎙 Actualizar
+                        Actualizar
                     </Button>
                     &nbsp;
                     <Button 
@@ -171,7 +171,7 @@ class Perfil extends Component {
                         }} 
                         variant="primary"
                     >
-                        <span role="img" aria-label="Music">🎼</span> Volver
+                        Volver
                     </Button>
                 </Form>
             );
@@ -179,13 +179,12 @@ class Perfil extends Component {
             return (
                 <div>
                     <Alert variant='success'>
-                        ¡Información de Usuario actualizada con éxito!  Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "<span role="img" aria-label="Music">🎼</span> Ir al inicio"
+                        ¡Información de Usuario actualizada con éxito!  Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "Ir al inicio"
                     </Alert>
                     <Loading />
                     <Button style={{
                         marginTop: '20px'
-                    }} as={Link} to={"/home"} variant="primary"><span role="img" aria-label="Music">🎼</span> Ir al inicio</Button>
-                    {/*<Button onClick={this.irPerfil} variant="primary">🎸 Mi perfil</Button>&nbsp;*/}
+                    }} as={Link} to={"/home"} variant="primary">Ir al inicio</Button>
                 </div>
             )
     }
