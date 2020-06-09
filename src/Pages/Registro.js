@@ -3,6 +3,8 @@ import { Form, Button, Col, InputGroup, Alert } from 'react-bootstrap';
 import firebase from '../Config/firebase';
 import { Link } from 'react-router-dom';
 import Loading from '../Components/Loading';
+import UltimasRifas from '../Components/UltimasRifas';
+import Slogan from '../Components/Slogan';
 
 class Registro extends Component {
     constructor() {
@@ -99,75 +101,74 @@ class Registro extends Component {
 
         if(estado.created === false)
             return (
-                <Form noValidate validated={estado.validated} onSubmit={this.handleSubmit}>
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridName">
-                            <Form.Label>Nombre:</Form.Label>
-                            <Form.Control required type="text" name="nombre" value={estado.nombre} placeholder="Ingrese nombre..." onChange={this.handleChange} />
-                            <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                        </Form.Group>
+                <section>
+                    <Slogan />
+                    <p>Introduzca sus datos para crear una cuenta: </p>
+                    <Form noValidate validated={estado.validated} onSubmit={this.handleSubmit}>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridName">
+                                <Form.Control required type="text" name="nombre" value={estado.nombre} placeholder="Nombre..." onChange={this.handleChange} />
+                                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                            </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridSurname">
-                            <Form.Label>Apellido:</Form.Label>
-                            <Form.Control required type="text" name="apellido" value={estado.apellido} placeholder="Ingrese apellido..." onChange={this.handleChange} />
-                            <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                        </Form.Group>
-                    </Form.Row>
+                            <Form.Group as={Col} controlId="formGridSurname">
+                                <Form.Control required type="text" name="apellido" value={estado.apellido} placeholder="Apellido..." onChange={this.handleChange} />
+                                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                            </Form.Group>
+                        </Form.Row>
 
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label>Email:</Form.Label>
-                            <Form.Control required type="email" name="email" value={estado.email} placeholder="Ingrese email..." onChange={this.handleChange} />
-                            <Form.Control.Feedback type="invalid">
-                                    Ingrese un email válido.
-                                </Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="validationCustomUsername">
-                            <Form.Label>Nombre de usuario:</Form.Label>
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <Form.Control
-                                    type="text"
-                                    name="username"
-                                    value={estado.username}
-                                    placeholder="Nombre de usuario..."
-                                    aria-describedby="inputGroupPrepend"
-                                    required
-                                    onChange={this.handleChange}
-                                />
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridEmail">
+                                <Form.Control required type="email" name="email" value={estado.email} placeholder="Email..." onChange={this.handleChange} />
                                 <Form.Control.Feedback type="invalid">
-                                    Ingrese un nombre de usuario válido.
-                                </Form.Control.Feedback>
-                            </InputGroup>
-                        </Form.Group>
-                    </Form.Row>
+                                        Ingrese un email válido.
+                                    </Form.Control.Feedback>
+                            </Form.Group>
 
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridPassword">
-                            <Form.Label>Contraseña:</Form.Label>
-                            <Form.Control required type="password" name="pass" value={estado.pass} placeholder="Contraseña..." onChange={this.handleChange} />
-                        </Form.Group>
+                            <Form.Group as={Col} controlId="validationCustomUsername">
+                                <InputGroup>
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control
+                                        type="text"
+                                        name="username"
+                                        value={estado.username}
+                                        placeholder="Nombre de usuario..."
+                                        aria-describedby="inputGroupPrepend"
+                                        required
+                                        onChange={this.handleChange}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Ingrese un nombre de usuario válido.
+                                    </Form.Control.Feedback>
+                                </InputGroup>
+                            </Form.Group>
+                        </Form.Row>
 
-                        <Form.Group as={Col} controlId="formGridPassword2">
-                            <Form.Label>Repetir contraseña:</Form.Label>
-                            <Form.Control required type="password" name="pass2" value={estado.pass2} placeholder="Repetir contraseña..." onChange={this.handleChange} />
-                        </Form.Group>
-                    </Form.Row>
-                    <Alert variant='danger' style={{display: (this.state.errorCreated ==='' ? "none" : "block") }}>
-                        Error al crear el usuario: {this.state.errorCreated}
-                    </Alert>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridPassword">
+                                <Form.Control required type="password" name="pass" value={estado.pass} placeholder="Contraseña..." onChange={this.handleChange} />
+                            </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Registrarse!
-                    </Button>
-                </Form>
+                            <Form.Group as={Col} controlId="formGridPassword2">
+                                <Form.Control required type="password" name="pass2" value={estado.pass2} placeholder="Repetir contraseña..." onChange={this.handleChange} />
+                            </Form.Group>
+                        </Form.Row>
+                        <Alert variant='danger' style={{display: (this.state.errorCreated ==='' ? "none" : "block") }}>
+                            Error al crear el usuario: {this.state.errorCreated}
+                        </Alert>
+
+                        <Button variant="primary" type="submit">
+                            Registrarse!
+                        </Button>
+                    </Form>
+                </section>
+                
             );
         else
             return (
-                <div>
+                <section>
                     <Alert variant='success'>
                         ¡Usuario creado con éxito! Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "Ir al inicio"
                     </Alert>
@@ -175,7 +176,7 @@ class Registro extends Component {
                     <Button style={{
                         marginTop: '20px'
                     }} as={Link} to={"/home"} variant="primary">Ir al inicio</Button>
-                </div>
+                </section>
             )
     }
 }

@@ -1,6 +1,7 @@
 ## TO-DO:
 
 - Estandarizar componentes y CSS de todas las páginas
+- Manejo de usuarios anónimos y redirecciones (enviar usuario al Contexto y consumirlo desde todos los componentes)
 - Integración con Marketplace de Mercadopago
 - Login con Google
 - Login con Twitter

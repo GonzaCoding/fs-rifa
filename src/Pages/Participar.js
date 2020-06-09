@@ -30,13 +30,13 @@ const Participar = (props) => {
         return <Loading />;
     } else {
         return(
-            <>
+            <section>
                 <h1>Participando en el sorteo:</h1>
                 <h2>{contenido.nombre}</h2>
                 <p>{contenido.descripción}</p>
                 <p>Termina: {contenido.fecha}</p>
                 <Rifa idRifa={props.match.params.id} />
-            </>
+            </section>
         )
     }
 }

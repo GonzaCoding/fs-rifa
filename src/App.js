@@ -12,26 +12,42 @@ import Login from './Pages/Login';
 import Logout from './Pages/Logout';
 import Perfil from './Pages/Perfil';
 import Participar from './Pages/Participar';
+import { Container } from 'react-bootstrap';
 
 const App = () =>(
   <div className="App">
     <BrowserRouter>
       <Header />
-      <section className="principal">
+      <Container>
         <Redirect from="/" to="/home" />
-        <Switch>
-          <Route path="/home" exact component={Home} />
-          <Route path="/crear" exact component={Crear} />
-          <Route path="/participar/:id" exact component={Participar} />
-          <Route path="/registro" exact component={Registro} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/perfil" exact component={Perfil} />
-          <Route path="/logout" exact component={Logout} />
-        </Switch>
-      </section>
+          <Switch>
+            <Route path="/home" exact component={Home} />
+            <Route path="/crear" exact component={Crear} />
+            <Route path="/participar/:id" exact component={Participar} />
+            <Route path="/registro" exact component={Registro} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/perfil" exact component={Perfil} />
+            <Route path="/logout" exact component={Logout} />
+          </Switch>
+      </Container>
       <Footer />
     </BrowserRouter>
   </div>
 );
 
 export default App;
+
+/*
+<Container>
+  <Redirect from="/" to="/home" />
+    <Switch>
+      <Route path="/home" exact component={Home} />
+      <Route path="/crear" exact component={Crear} />
+      <Route path="/participar/:id" exact component={Participar} />
+      <Route path="/registro" exact component={Registro} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/perfil" exact component={Perfil} />
+      <Route path="/logout" exact component={Logout} />
+    </Switch>
+</Container>
+*/

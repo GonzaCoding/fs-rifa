@@ -109,75 +109,77 @@ class Perfil extends Component {
 
         if(estado.updated === false)
             return (
-                <Form noValidate validated={estado.validated} onSubmit={this.handleSubmit}>
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridName">
-                            <Form.Label>Nombre:</Form.Label>
-                            <Form.Control required type="text" name="nombre" value={estado.nombre} placeholder="Ingrese nombre..." onChange={this.handleChange} />
-                            <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                        </Form.Group>
+                <section>
+                    <Form noValidate validated={estado.validated} onSubmit={this.handleSubmit}>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridName">
+                                <Form.Label>Nombre:</Form.Label>
+                                <Form.Control required type="text" name="nombre" value={estado.nombre} placeholder="Ingrese nombre..." onChange={this.handleChange} />
+                                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                            </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridSurname">
-                            <Form.Label>Apellido:</Form.Label>
-                            <Form.Control required type="text" name="apellido" value={estado.apellido} placeholder="Ingrese apellido..." onChange={this.handleChange} />
-                            <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                        </Form.Group>
-                    </Form.Row>
+                            <Form.Group as={Col} controlId="formGridSurname">
+                                <Form.Label>Apellido:</Form.Label>
+                                <Form.Control required type="text" name="apellido" value={estado.apellido} placeholder="Ingrese apellido..." onChange={this.handleChange} />
+                                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                            </Form.Group>
+                        </Form.Row>
 
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label>Email:</Form.Label>
-                            <Form.Control disabled type="email" name="email" value={estado.email} placeholder="Ingrese email..." onChange={this.handleChange} />
-                            <Form.Control.Feedback type="invalid">
-                                    Ingrese un email válido.
-                                </Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="validationCustomUsername">
-                            <Form.Label>Nombre de usuario:</Form.Label>
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <Form.Control
-                                    type="text"
-                                    name="username"
-                                    value={estado.username}
-                                    placeholder="Nombre de usuario..."
-                                    aria-describedby="inputGroupPrepend"
-                                    required
-                                    onChange={this.handleChange}
-                                />
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridEmail">
+                                <Form.Label>Email:</Form.Label>
+                                <Form.Control disabled type="email" name="email" value={estado.email} placeholder="Ingrese email..." onChange={this.handleChange} />
                                 <Form.Control.Feedback type="invalid">
-                                    Ingrese un nombre de usuario válido.
-                                </Form.Control.Feedback>
-                            </InputGroup>
-                        </Form.Group>
-                    </Form.Row>
+                                        Ingrese un email válido.
+                                    </Form.Control.Feedback>
+                            </Form.Group>
 
-                    
-                    <Alert variant='danger' style={{display: (this.state.errorUpdated ==='' ? "none" : "block") }}>
-                        Error al actualizar el usuario: {this.state.errorUpdated}
-                    </Alert>
+                            <Form.Group as={Col} controlId="validationCustomUsername">
+                                <Form.Label>Nombre de usuario:</Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control
+                                        type="text"
+                                        name="username"
+                                        value={estado.username}
+                                        placeholder="Nombre de usuario..."
+                                        aria-describedby="inputGroupPrepend"
+                                        required
+                                        onChange={this.handleChange}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Ingrese un nombre de usuario válido.
+                                    </Form.Control.Feedback>
+                                </InputGroup>
+                            </Form.Group>
+                        </Form.Row>
+
+                        
+                        <Alert variant='danger' style={{display: (this.state.errorUpdated ==='' ? "none" : "block") }}>
+                            Error al actualizar el usuario: {this.state.errorUpdated}
+                        </Alert>
 
 
-                    <Button variant="primary" type="submit">
-                        Actualizar
-                    </Button>
-                    &nbsp;
-                    <Button 
-                        onClick={()=>{
-                            this.props.history.goBack();
-                        }} 
-                        variant="primary"
-                    >
-                        Volver
-                    </Button>
-                </Form>
+                        <Button variant="primary" type="submit">
+                            Actualizar
+                        </Button>
+                        &nbsp;
+                        <Button 
+                            onClick={()=>{
+                                this.props.history.goBack();
+                            }} 
+                            variant="primary"
+                        >
+                            Volver
+                        </Button>
+                    </Form>
+                </section>                
             );
         else
             return (
-                <div>
+                <section>
                     <Alert variant='success'>
                         ¡Información de Usuario actualizada con éxito!  Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "Ir al inicio"
                     </Alert>
@@ -185,7 +187,7 @@ class Perfil extends Component {
                     <Button style={{
                         marginTop: '20px'
                     }} as={Link} to={"/home"} variant="primary">Ir al inicio</Button>
-                </div>
+                </section>
             )
     }
 }

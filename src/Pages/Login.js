@@ -3,6 +3,7 @@ import { Form, Button, Col, Alert } from 'react-bootstrap';
 import firebase from '../Config/firebase';
 import { Link } from 'react-router-dom';
 import Loading from '../Components/Loading';
+import Slogan from '../Components/Slogan';
 
 
 class Login extends Component {
@@ -75,14 +76,12 @@ class Login extends Component {
         const estado = this.state;
         if (estado.login === false) {
             return (
-                <>
-                    <h1>¡Bienvenid@ a FS rifa!</h1>
-                    <h3>La mejor forma de realizar sorteos online</h3>
+                <section>
+                    <Slogan />
                     <p>Introduzca sus datos para ingresar en el sistema: </p>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Email:</Form.Label>
+                            <Form.Group as={Col} controlId="formGridEmail">                        
                                 <Form.Control required type="email" name="email" value={estado.email} placeholder="Ingrese email..." onChange={this.handleChange} />
                                 <Form.Control.Feedback type="invalid">
                                     Ingrese un email válido.
@@ -92,7 +91,6 @@ class Login extends Component {
 
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Label>Contraseña:</Form.Label>
                                 <Form.Control required type="password" name="pass" value={estado.pass} placeholder="Contraseña..." onChange={this.handleChange} />
                                 <Form.Control.Feedback type="invalid">
                                     Ingrese la contraseña.
@@ -105,13 +103,14 @@ class Login extends Component {
 
                         <Button variant="primary" type="submit">
                          ¡Ingresar!
-                        </Button>
+                        </Button>{' '}
+                        <Button as={Link} to={"/registro"} variant="primary">¡Registrarse!</Button>
                     </Form>
-                </>
+                </section>
             );
         } else {
             return (
-                <>
+                <section>
                     <Alert variant='success'>
                         ¡Ingreso exitoso! Está siendo redirigido al Inicio. Si la página no se redirecciona, haga click en el botón "Ir al inicio"
                     </Alert>
@@ -119,7 +118,7 @@ class Login extends Component {
                     <Button style={{
                         marginTop: '20px'
                     }} as={Link} to={"/home"} variant="primary">Ir al inicio</Button>
-                </>
+                </section>
             )
         }
     }

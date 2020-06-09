@@ -46,45 +46,46 @@ const Crear = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridName">
-                    <Form.Label>Nombre:</Form.Label>
-                    <Form.Control  type="text" ref={nombre} name="nombre" placeholder="Ingrese nombre..."  />
-                    <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                </Form.Group>
-            </Form.Row>
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridCantidad">
-                    <Form.Label>Cantidad de números:</Form.Label>
-                    <Form.Control required type="number" ref={cantidad} name="cantidad" placeholder="Cantidad..."  />
-                    <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} controlId="formGridNumbers">
-                    <Form.Label>Fecha del sorteo:</Form.Label>
-                    <Form.Control type="date" ref={fecha} name="fecha"  />
-                    <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                </Form.Group>
-            </Form.Row>
+        <section>
+            <Form onSubmit={handleSubmit}>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridName">
+                        <Form.Label>Nombre:</Form.Label>
+                        <Form.Control  type="text" ref={nombre} name="nombre" placeholder="Ingrese nombre..."  />
+                        <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                    </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridCantidad">
+                        <Form.Label>Cantidad de números:</Form.Label>
+                        <Form.Control required type="number" ref={cantidad} name="cantidad" placeholder="Cantidad..."  />
+                        <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridNumbers">
+                        <Form.Label>Fecha del sorteo:</Form.Label>
+                        <Form.Control type="date" ref={fecha} name="fecha"  />
+                        <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                    </Form.Group>
+                </Form.Row>
 
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridDescription">
-                    <Form.Label>Descripción:</Form.Label>
-                    <Form.Control  as="textarea" rows="3" ref={descripcion} name="descripcion" placeholder="Describa qué se rifará..." />
-                    <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                </Form.Group>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridDescription">
+                        <Form.Label>Descripción:</Form.Label>
+                        <Form.Control  as="textarea" rows="3" ref={descripcion} name="descripcion" placeholder="Describa qué se rifará..." />
+                        <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                    </Form.Group>
 
-            </Form.Row>
-            {/*<Alert variant='danger' style={{display: (this.state.errorCreated ==='' ? "none" : "block") }}>
-                Error al crear el usuario: {this.state.errorCreated}
-            </Alert>*/}
+                </Form.Row>
+                {/*<Alert variant='danger' style={{display: (this.state.errorCreated ==='' ? "none" : "block") }}>
+                    Error al crear el usuario: {this.state.errorCreated}
+                </Alert>*/}
 
-            <Button variant="primary" type="submit">
-                Crear rifa!
-            </Button>
-        </Form>
+                <Button variant="primary" type="submit">
+                    Crear rifa!
+                </Button>
+            </Form>
+        </section>
     );
-    
 }
 
 export default Crear;

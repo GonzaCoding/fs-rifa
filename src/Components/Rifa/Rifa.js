@@ -75,7 +75,15 @@ const Rifa = (props) => {
         
         //console.log("ejecutado useeffect de " + props.idRifa);
         //console.log(usuario);
-        setUser(firebase.auth.currentUser)
+        if (firebase.auth.currentUser){
+            setUser(firebase.auth.currentUser)
+        }else {
+            setUser({
+                uid: 'anonimo'
+            })
+        }     
+        
+
         //3. escuchar cambios
         firebase.db.collection("rifas").doc(props.idRifa)
         .onSnapshot(function(doc) {

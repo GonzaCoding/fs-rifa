@@ -1,3 +1,42 @@
 .App {
   text-align: center;
 }
+
+section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.contenedor-rifa {
+  display: flex;
+  /*justify-content: center;*/
+  justify-content: space-between;
+  
+  /*max-width: 400px !important;*/
+
+  flex-wrap: wrap;
+  /*@media (min-width: 1200px) {
+    text-align: center;
+  }
+
+  @media (min-width: 922px) {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    text-align: center;
+  }
+
+  @media (min-width: 576px) {
+    text-align: center;
+  }
+
+  @media (max-width: 400px) {
+    text-align: left;
+  }*/
+}
+
+Form {
+  max-width: 520px;
+  margin: auto;
+}

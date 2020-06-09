@@ -39,7 +39,7 @@ const Header = () => {
                     height="50"
                     className="d-inline-block align-center"
                 />{' '}
-                FS rifa
+                FS rifa { firebase.auth.currentUser && firebase.auth.currentUser.uid }
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav" >
@@ -54,7 +54,7 @@ const Header = () => {
                     !userData && 
                         <>
                                 <Nav.Link as={Link} to="/login">Ingresar</Nav.Link>
-                                <Nav.Link as={Link} to="/registro">Crear cuenta</Nav.Link>
+                                <Nav.Link as={Link} to="/registro">Registrarse</Nav.Link>
                         </>
                 }
                 {
